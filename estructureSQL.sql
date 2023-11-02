@@ -137,3 +137,27 @@ ALTER TABLE inscriptions MODIFY id INT NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE exams ADD CONSTRAINT PK_Exams_Id PRIMARY KEY (id);
 ALTER TABLE exams MODIFY id INT NOT NULL AUTO_INCREMENT;
+
+
+-- UIDS
+ALTER TABLE professors ADD CONSTRAINT UC_Professors_Phone UNIQUE (principalPhoneNumber);
+ALTER TABLE professors ADD CONSTRAINT UC_Professors_Email UNIQUE (principalEmail);
+
+ALTER TABLE emailsProfessor ADD CONSTRAINT UC_EmailsProfessor_Email UNIQUE (email);
+
+ALTER TABLE phonesProfessor ADD CONSTRAINT UC_PhonesProfessor_PhoneNumber UNIQUE (phoneNumber);
+
+ALTER TABLE faculties ADD CONSTRAINT UC_Faculties_nameFaculty UNIQUE (nameFaculty);
+
+ALTER TABLE statesCourse ADD CONSTRAINT UC_StatesCourse_nameState UNIQUE (nameState);
+
+ALTER TABLE courses ADD CONSTRAINT UC_Courses_professor_id UNIQUE (professor_id);
+
+ALTER TABLE students ADD CONSTRAINT UC_Students_Phone UNIQUE (principalPhoneNumber);
+ALTER TABLE students ADD CONSTRAINT UC_Students_Email UNIQUE (principalEmail);
+
+ALTER TABLE emailsStudent ADD CONSTRAINT UC_EmailsStudent_Email UNIQUE (email);
+
+ALTER TABLE phonesStudent ADD CONSTRAINT UC_PhonesStudent_PhoneNumber UNIQUE (phoneNumber);
+
+ALTER TABLE statesInscription ADD CONSTRAINT UC_StatesInscription_NameState UNIQUE (nameState);
