@@ -1,0 +1,109 @@
+CREATE DATABASE IF NOT EXISTS university;
+
+USE university;
+
+CREATE TABLE professors (
+  dni VARCHAR(20) NOT NULL,
+  firstName VARCHAR(50) NOT NULL,
+  lastName VARCHAR(50) NOT NULL,
+  professorTitle VARCHAR(20) NOT NULL,
+  principalPhoneNumber VARCHAR(15) NOT NULL,
+  principalEmail VARCHAR(50) NOT NULL,
+  birthdate DATE NOT NULL,
+  connectionTime TIME NOT NULL,
+  disconnectionTime TIME
+);
+
+CREATE TABLE emailsProfessor (
+  email VARCHAR(50) NOT NULL,
+  professor_id VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE phonesProfessor (
+  phoneNumber VARCHAR(15) NOT NULL,
+  professor_id VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE faculties (
+  id INT NOT NULL,
+  nameFaculty VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE departments (
+  id INT NOT NULL,
+  nameDepartment VARCHAR(50) NOT NULL,
+  address VARCHAR(50) NOT NULL,
+  faculty_id INT NOT NULL
+);
+
+CREATE TABLE statesCourse (
+  id INT NOT NULL,
+  nameState VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE courses (
+  id INT NOT NULL,
+  nameCourse VARCHAR(50) NOT NULL,
+  description VARCHAR(255) NOT NULL,
+  duration VARCHAR(50) NOT NULL,
+  department_id INT NOT NULL,
+  professor_id VARCHAR(20) NOT NULL,
+  stateCourse_id INT NOT NULL
+);
+
+CREATE TABLE students (
+  dni VARCHAR(20) NOT NULL,
+  firstName VARCHAR(50) NOT NULL,
+  lastName VARCHAR(50) NOT NULL,
+  principalPhoneNumber VARCHAR(15) NOT NULL,
+  principalEmail VARCHAR(50) NOT NULL,
+  birthdate DATE NOT NULL
+);
+
+CREATE TABLE emailsStudent (
+  email VARCHAR(50) NOT NULL,
+  student_id VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE phonesStudent (
+  phoneNumber VARCHAR(15) NOT NULL,
+  student_id VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE academicSessions (
+  id INT NOT NULL,
+  startDate DATE NOT NULL,
+  endDate DATE NOT NULL
+);
+
+CREATE TABLE courses_academicSessions (
+  course_id INT NOT NULL,
+  academicSession_id INT NOT NULL
+);
+
+CREATE TABLE statesInscription (
+  id INT NOT NULL,
+  nameState VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE inscriptions (
+  id INT NOT NULL,
+  course_id INT NOT NULL,
+  student_id VARCHAR(20) NOT NULL,
+  stateInscription_id INT NOT NULL
+);
+
+CREATE TABLE exams (
+  id INT NOT NULL,
+  grade DECIMAL(4,1) NOT NULL,
+  examDate DATE NOT NULL,
+  student_id VARCHAR(20) NOT NULL,
+  course_id INT NOT NULL
+);
+
+CREATE TABLE attendances (
+  course_id INT NOT NULL,
+  student_id VARCHAR(20) NOT NULL,
+  attendanceDate DATE NOT NULL,
+  attend BOOLEAN NOT NULL
+);
