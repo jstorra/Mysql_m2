@@ -161,3 +161,32 @@ ALTER TABLE emailsStudent ADD CONSTRAINT UC_EmailsStudent_Email UNIQUE (email);
 ALTER TABLE phonesStudent ADD CONSTRAINT UC_PhonesStudent_PhoneNumber UNIQUE (phoneNumber);
 
 ALTER TABLE statesInscription ADD CONSTRAINT UC_StatesInscription_NameState UNIQUE (nameState);
+
+
+-- FOREIGN KEYS
+ALTER TABLE emailsProfessor ADD FOREIGN KEY (professor_id) REFERENCES professors (dni);
+
+ALTER TABLE phonesProfessor ADD FOREIGN KEY (professor_id) REFERENCES professors (dni);
+
+ALTER TABLE departments ADD FOREIGN KEY (faculty_id) REFERENCES faculties (id);
+
+ALTER TABLE courses ADD FOREIGN KEY (department_id) REFERENCES departments (id);
+ALTER TABLE courses ADD FOREIGN KEY (professor_id) REFERENCES professors (dni);
+ALTER TABLE courses ADD FOREIGN KEY (stateCourse_id) REFERENCES statesCourse (id);
+
+ALTER TABLE emailsStudent ADD FOREIGN KEY (student_id) REFERENCES students (dni);
+
+ALTER TABLE phonesStudent ADD FOREIGN KEY (student_id) REFERENCES students (dni);
+
+ALTER TABLE courses_academicSessions ADD FOREIGN KEY (course_id) REFERENCES courses (id);
+ALTER TABLE courses_academicSessions ADD FOREIGN KEY (academicSession_id) REFERENCES academicSessions (id);
+
+ALTER TABLE inscriptions ADD FOREIGN KEY (course_id) REFERENCES courses (id);
+ALTER TABLE inscriptions ADD FOREIGN KEY (student_id) REFERENCES students (dni);
+ALTER TABLE inscriptions ADD FOREIGN KEY (stateInscription_id) REFERENCES statesInscription (id);
+
+ALTER TABLE exams ADD FOREIGN KEY (student_id) REFERENCES students (dni);
+ALTER TABLE exams ADD FOREIGN KEY (course_id) REFERENCES courses (id);
+
+ALTER TABLE attendances ADD FOREIGN KEY (course_id) REFERENCES courses (id);
+ALTER TABLE attendances ADD FOREIGN KEY (student_id) REFERENCES students (dni);
