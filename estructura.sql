@@ -184,29 +184,29 @@ ALTER TABLE tiposPago ADD CONSTRAINT UC_TiposPago_NombreTipo UNIQUE (nombreTipo)
 
 
 -- FOREIGN KEYS
-ALTER TABLE equipos ADD FOREIGN KEY (cantJugadores) REFERENCES descuentos (id);
+ALTER TABLE equipos ADD CONSTRAINT FK_Equipos_CantJugadores FOREIGN KEY (cantJugadores) REFERENCES descuentos (id);
 
-ALTER TABLE clientes ADD FOREIGN KEY (equipo_id) REFERENCES equipos (id);
-ALTER TABLE clientes ADD FOREIGN KEY (tipoCliente_id) REFERENCES tiposCliente (id);
+ALTER TABLE clientes ADD CONSTRAINT FK_Clientes_Equipo_id FOREIGN KEY (equipo_id) REFERENCES equipos (id);
+ALTER TABLE clientes ADD CONSTRAINT FK_Clientes_TipoCliente_id FOREIGN KEY (tipoCliente_id) REFERENCES tiposCliente (id);
 
-ALTER TABLE empleados ADD FOREIGN KEY (cargoEmpleado_id) REFERENCES cargosEmpleado (id);
+ALTER TABLE empleados ADD CONSTRAINT FK_Empleados_CargoEmpleado_id FOREIGN KEY (cargoEmpleado_id) REFERENCES cargosEmpleado (id);
 
-ALTER TABLE articulos ADD FOREIGN KEY (inventario_id) REFERENCES inventarios (id);
-ALTER TABLE articulos ADD FOREIGN KEY (proveedor_id) REFERENCES proveedores (id);
+ALTER TABLE articulos ADD CONSTRAINT FK_Articulos_Inventario_id FOREIGN KEY (inventario_id) REFERENCES inventarios (id);
+ALTER TABLE articulos ADD CONSTRAINT FK_Articulos_Proveedor_id FOREIGN KEY (proveedor_id) REFERENCES proveedores (id);
 
-ALTER TABLE pedidos ADD FOREIGN KEY (cliente_id) REFERENCES clientes (cedula);
-ALTER TABLE pedidos ADD FOREIGN KEY (envio_id) REFERENCES envios (id);
+ALTER TABLE pedidos ADD CONSTRAINT FK_Pedidos_Cliente_id FOREIGN KEY (cliente_id) REFERENCES clientes (cedula);
+ALTER TABLE pedidos ADD CONSTRAINT FK_Pedidos_Envio_id FOREIGN KEY (envio_id) REFERENCES envios (id);
 
-ALTER TABLE articulos_pedido ADD FOREIGN KEY (pedido_id) REFERENCES pedidos (id);
-ALTER TABLE articulos_pedido ADD FOREIGN KEY (articulo_id) REFERENCES articulos (id);
+ALTER TABLE articulos_pedido ADD CONSTRAINT FK_Articulos_pedido_Pedido_id FOREIGN KEY (pedido_id) REFERENCES pedidos (id);
+ALTER TABLE articulos_pedido ADD CONSTRAINT FK_Articulos_pedido_Articulo_id FOREIGN KEY (articulo_id) REFERENCES articulos (id);
 
-ALTER TABLE quejasCliente ADD FOREIGN KEY (empleado_id) REFERENCES empleados (cedula);
-ALTER TABLE quejasCliente ADD FOREIGN KEY (cliente_id) REFERENCES clientes (cedula);
+ALTER TABLE quejasCliente ADD CONSTRAINT FK_QuejasCliente_Empleado_id FOREIGN KEY (empleado_id) REFERENCES empleados (cedula);
+ALTER TABLE quejasCliente ADD CONSTRAINT FK_QuejasCliente_Cliente_id FOREIGN KEY (cliente_id) REFERENCES clientes (cedula);
 
-ALTER TABLE quejasEquipo ADD FOREIGN KEY (empleado_id) REFERENCES empleados (cedula);
-ALTER TABLE quejasEquipo ADD FOREIGN KEY (equipo_id) REFERENCES equipos (id);
+ALTER TABLE quejasEquipo ADD CONSTRAINT FK_QuejasEquipo_Empleado_id FOREIGN KEY (empleado_id) REFERENCES empleados (cedula);
+ALTER TABLE quejasEquipo ADD CONSTRAINT FK_QuejasEquipo_Equipo_id FOREIGN KEY (equipo_id) REFERENCES equipos (id);
 
-ALTER TABLE compras ADD FOREIGN KEY (pedido_id) REFERENCES pedidos (id);
-ALTER TABLE compras ADD FOREIGN KEY (cliente_id) REFERENCES clientes (cedula);
-ALTER TABLE compras ADD FOREIGN KEY (empleado_id) REFERENCES empleados (cedula);
-ALTER TABLE compras ADD FOREIGN KEY (tipoPago_id) REFERENCES tiposPago (id);
+ALTER TABLE compras ADD CONSTRAINT FK_Compras_Pedido_id FOREIGN KEY (pedido_id) REFERENCES pedidos (id);
+ALTER TABLE compras ADD CONSTRAINT FK_Compras_Cliente_id FOREIGN KEY (cliente_id) REFERENCES clientes (cedula);
+ALTER TABLE compras ADD CONSTRAINT FK_Compras_Empleado_id FOREIGN KEY (empleado_id) REFERENCES empleados (cedula);
+ALTER TABLE compras ADD CONSTRAINT FK_Compras_TipoPago_id FOREIGN KEY (tipoPago_id) REFERENCES tiposPago (id);
