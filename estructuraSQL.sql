@@ -1,3 +1,7 @@
+CREATE DATABASE IF NOT EXISTS biblioteca;
+
+USE biblioteca;
+
 CREATE TABLE autor (
   id INT NOT NULL,
   nombre VARCHAR(50) NOT NULL,
