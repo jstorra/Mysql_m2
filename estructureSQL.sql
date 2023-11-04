@@ -164,32 +164,32 @@ ALTER TABLE statesInscription ADD CONSTRAINT UC_StatesInscription_NameState UNIQ
 
 
 -- FOREIGN KEYS
-ALTER TABLE emailsProfessor ADD FOREIGN KEY (professor_id) REFERENCES professors (dni);
+ALTER TABLE emailsProfessor ADD CONSTRAINT FK_EmailsProfessor_Professor_id FOREIGN KEY (professor_id) REFERENCES professors (dni);
 
-ALTER TABLE phonesProfessor ADD FOREIGN KEY (professor_id) REFERENCES professors (dni);
+ALTER TABLE phonesProfessor ADD CONSTRAINT FK_PhonesProfessor_Professor_id FOREIGN KEY (professor_id) REFERENCES professors (dni);
 
-ALTER TABLE departments ADD FOREIGN KEY (faculty_id) REFERENCES faculties (id);
+ALTER TABLE departments ADD CONSTRAINT FK_Departments_Faculty_id FOREIGN KEY (faculty_id) REFERENCES faculties (id);
 
-ALTER TABLE courses ADD FOREIGN KEY (department_id) REFERENCES departments (id);
-ALTER TABLE courses ADD FOREIGN KEY (professor_id) REFERENCES professors (dni);
-ALTER TABLE courses ADD FOREIGN KEY (stateCourse_id) REFERENCES statesCourse (id);
+ALTER TABLE courses ADD CONSTRAINT FK_Courses_Department_id FOREIGN KEY (department_id) REFERENCES departments (id);
+ALTER TABLE courses ADD CONSTRAINT FK_Courses_Professor_id FOREIGN KEY (professor_id) REFERENCES professors (dni);
+ALTER TABLE courses ADD CONSTRAINT FK_Courses_StateCourse_id FOREIGN KEY (stateCourse_id) REFERENCES statesCourse (id);
 
-ALTER TABLE emailsStudent ADD FOREIGN KEY (student_id) REFERENCES students (dni);
+ALTER TABLE emailsStudent ADD CONSTRAINT FK_EmailsStudent_Student_id FOREIGN KEY (student_id) REFERENCES students (dni);
 
-ALTER TABLE phonesStudent ADD FOREIGN KEY (student_id) REFERENCES students (dni);
+ALTER TABLE phonesStudent ADD CONSTRAINT FK_PhonesStudent_Student_id FOREIGN KEY (student_id) REFERENCES students (dni);
 
-ALTER TABLE courses_academicSessions ADD FOREIGN KEY (course_id) REFERENCES courses (id);
-ALTER TABLE courses_academicSessions ADD FOREIGN KEY (academicSession_id) REFERENCES academicSessions (id);
+ALTER TABLE courses_academicSessions ADD CONSTRAINT FK_Courses_academicSessions_Course_id FOREIGN KEY (course_id) REFERENCES courses (id);
+ALTER TABLE courses_academicSessions ADD CONSTRAINT FK_Courses_academicSessions_AcademicSession_id FOREIGN KEY (academicSession_id) REFERENCES academicSessions (id);
 
-ALTER TABLE inscriptions ADD FOREIGN KEY (course_id) REFERENCES courses (id);
-ALTER TABLE inscriptions ADD FOREIGN KEY (student_id) REFERENCES students (dni);
-ALTER TABLE inscriptions ADD FOREIGN KEY (stateInscription_id) REFERENCES statesInscription (id);
+ALTER TABLE inscriptions ADD CONSTRAINT FK_Inscriptions_Course_id FOREIGN KEY (course_id) REFERENCES courses (id);
+ALTER TABLE inscriptions ADD CONSTRAINT FK_Inscriptions_Student_id FOREIGN KEY (student_id) REFERENCES students (dni);
+ALTER TABLE inscriptions ADD CONSTRAINT FK_Inscriptions_StateInscription_id FOREIGN KEY (stateInscription_id) REFERENCES statesInscription (id);
 
-ALTER TABLE exams ADD FOREIGN KEY (student_id) REFERENCES students (dni);
-ALTER TABLE exams ADD FOREIGN KEY (course_id) REFERENCES courses (id);
+ALTER TABLE exams ADD CONSTRAINT FK_Exams_Student_id FOREIGN KEY (student_id) REFERENCES students (dni);
+ALTER TABLE exams ADD CONSTRAINT FK_Exams_Course_id FOREIGN KEY (course_id) REFERENCES courses (id);
 
-ALTER TABLE attendances ADD FOREIGN KEY (course_id) REFERENCES courses (id);
-ALTER TABLE attendances ADD FOREIGN KEY (student_id) REFERENCES students (dni);
+ALTER TABLE attendances ADD CONSTRAINT FK_Attendances_Course_id FOREIGN KEY (course_id) REFERENCES courses (id);
+ALTER TABLE attendances ADD CONSTRAINT FK_Attendances_Student_id FOREIGN KEY (student_id) REFERENCES students (dni);
 
 
 -- INSERTS INTO
