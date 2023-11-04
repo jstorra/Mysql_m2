@@ -162,22 +162,22 @@ ALTER TABLE tiposPago ADD CONSTRAINT UC_TiposPago_NombreTipo UNIQUE (nombreTipo)
 
 
 -- FOREIGN KEYS
-ALTER TABLE licencias ADD FOREIGN KEY (cliente_id) REFERENCES clientes (cedula);
+ALTER TABLE licencias ADD CONSTRAINT FK_Licencias_Cliente_id FOREIGN KEY (cliente_id) REFERENCES clientes (cedula);
 
-ALTER TABLE categoria_licencia ADD FOREIGN KEY (licencia_id) REFERENCES licencias (id);
-ALTER TABLE categoria_licencia ADD FOREIGN KEY (categoria_id) REFERENCES categoriasLicencia (id);
+ALTER TABLE categoria_licencia ADD CONSTRAINT FK_Categoria_licencia_Licencia_id FOREIGN KEY (licencia_id) REFERENCES licencias (id);
+ALTER TABLE categoria_licencia ADD CONSTRAINT FK_Categoria_licencia_Categoria_id FOREIGN KEY (categoria_id) REFERENCES categoriasLicencia (id);
 
-ALTER TABLE gamas ADD FOREIGN KEY (seguro_id) REFERENCES seguros (id);
+ALTER TABLE gamas ADD CONSTRAINT FK_Gamas_Seguro_id FOREIGN KEY (seguro_id) REFERENCES seguros (id);
 
-ALTER TABLE vehiculos ADD FOREIGN KEY (estado_id) REFERENCES estados (id);
-ALTER TABLE vehiculos ADD FOREIGN KEY (color_id) REFERENCES colores (id);
-ALTER TABLE vehiculos ADD FOREIGN KEY (marca_id) REFERENCES marcas (id);
-ALTER TABLE vehiculos ADD FOREIGN KEY (modelo_id) REFERENCES modelos (id);
-ALTER TABLE vehiculos ADD FOREIGN KEY (gama_id) REFERENCES gamas (id);
-ALTER TABLE vehiculos ADD FOREIGN KEY (tipoVehiculo_id) REFERENCES tiposVehiculo (id);
+ALTER TABLE vehiculos ADD CONSTRAINT FK_Vehiculos_Estado_id FOREIGN KEY (estado_id) REFERENCES estados (id);
+ALTER TABLE vehiculos ADD CONSTRAINT FK_Vehiculos_Color_id FOREIGN KEY (color_id) REFERENCES colores (id);
+ALTER TABLE vehiculos ADD CONSTRAINT FK_Vehiculos_Marca_id FOREIGN KEY (marca_id) REFERENCES marcas (id);
+ALTER TABLE vehiculos ADD CONSTRAINT FK_Vehiculos_Modelo_id FOREIGN KEY (modelo_id) REFERENCES modelos (id);
+ALTER TABLE vehiculos ADD CONSTRAINT FK_Vehiculos_Gama_id FOREIGN KEY (gama_id) REFERENCES gamas (id);
+ALTER TABLE vehiculos ADD CONSTRAINT FK_Vehiculos_TipoVehiculo_id FOREIGN KEY (tipoVehiculo_id) REFERENCES tiposVehiculo (id);
 
-ALTER TABLE multas ADD FOREIGN KEY (factura_id) REFERENCES facturas (id);
+ALTER TABLE multas ADD CONSTRAINT FK_Multas_Factura_id FOREIGN KEY (factura_id) REFERENCES facturas (id);
 
-ALTER TABLE facturas ADD FOREIGN KEY (vehiculo_id) REFERENCES vehiculos (numeroPlaca);
-ALTER TABLE facturas ADD FOREIGN KEY (cliente_id) REFERENCES clientes (cedula);
-ALTER TABLE facturas ADD FOREIGN KEY (tipoPago_id) REFERENCES tiposPago (id);
+ALTER TABLE facturas ADD CONSTRAINT FK_Facturas_Vehiculo_id FOREIGN KEY (vehiculo_id) REFERENCES vehiculos (numeroPlaca);
+ALTER TABLE facturas ADD CONSTRAINT FK_Facturas_Cliente_id FOREIGN KEY (cliente_id) REFERENCES clientes (cedula);
+ALTER TABLE facturas ADD CONSTRAINT FK_Facturas_TipoPago_id FOREIGN KEY (tipoPago_id) REFERENCES tiposPago (id);
