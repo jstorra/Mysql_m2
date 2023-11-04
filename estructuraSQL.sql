@@ -109,18 +109,18 @@ ALTER TABLE tiposPago ADD CONSTRAINT UC_TiposPago_NombreTipo UNIQUE (nombreTipo)
 
 
 -- FOREIGN KEYS
-ALTER TABLE productos ADD FOREIGN KEY (proveedor_id) REFERENCES proveedores (id);
+ALTER TABLE productos ADD CONSTRAINT FK_Productos_Proveedor_id FOREIGN KEY (proveedor_id) REFERENCES proveedores (id);
 
-ALTER TABLE pedidos ADD FOREIGN KEY (cliente_id) REFERENCES clientes (cedula);
+ALTER TABLE pedidos ADD CONSTRAINT FK_Pedidos_Cliente_id FOREIGN KEY (cliente_id) REFERENCES clientes (cedula);
 
-ALTER TABLE detalle_pedido ADD FOREIGN KEY (producto_id) REFERENCES productos (id);
-ALTER TABLE detalle_pedido ADD FOREIGN KEY (pedido_id) REFERENCES pedidos (id);
+ALTER TABLE detalle_pedido ADD CONSTRAINT FK_Detalle_pedido_Producto_id FOREIGN KEY (producto_id) REFERENCES productos (id);
+ALTER TABLE detalle_pedido ADD CONSTRAINT FK_Detalle_pedido_Pedido_id FOREIGN KEY (pedido_id) REFERENCES pedidos (id);
 
-ALTER TABLE facturas ADD FOREIGN KEY (pedido_id) REFERENCES pedidos (id);
+ALTER TABLE facturas ADD CONSTRAINT FK_Facturas_Pedido_id FOREIGN KEY (pedido_id) REFERENCES pedidos (id);
 
-ALTER TABLE detalle_factura ADD FOREIGN KEY (factura_id) REFERENCES facturas (id);
-ALTER TABLE detalle_factura ADD FOREIGN KEY (producto_id) REFERENCES productos (id);
+ALTER TABLE detalle_factura ADD CONSTRAINT FK_Detalle_factura_Factura_id FOREIGN KEY (factura_id) REFERENCES facturas (id);
+ALTER TABLE detalle_factura ADD CONSTRAINT FK_Detalle_factura_Producto_id FOREIGN KEY (producto_id) REFERENCES productos (id);
 
-ALTER TABLE compras ADD FOREIGN KEY (tipoPago_id) REFERENCES tiposPago (id);
-ALTER TABLE compras ADD FOREIGN KEY (factura_id) REFERENCES facturas (id);
-ALTER TABLE compras ADD FOREIGN KEY (cliente_id) REFERENCES clientes (cedula);
+ALTER TABLE compras ADD CONSTRAINT FK_Compras_TipoPago_id FOREIGN KEY (tipoPago_id) REFERENCES tiposPago (id);
+ALTER TABLE compras ADD CONSTRAINT FK_Compras_Factura_id FOREIGN KEY (factura_id) REFERENCES facturas (id);
+ALTER TABLE compras ADD CONSTRAINT FK_Compras_Cliente_id FOREIGN KEY (cliente_id) REFERENCES clientes (cedula);
