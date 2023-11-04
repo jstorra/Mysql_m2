@@ -57,9 +57,9 @@ CREATE TABLE contenido_carrito (
   cantidad INT NOT NULL
 );
 
-CREATE TABLE shipper (
+CREATE TABLE repartidor (
   id INT NOT NULL,
-  nombreShipper VARCHAR(50) NOT NULL
+  nombreRepartidor VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE opcionEnvio (
@@ -77,7 +77,7 @@ CREATE TABLE pedido (
   carrito_id INT NOT NULL,
   direccionFact VARCHAR(50) NOT NULL,
   direccionEnv VARCHAR(50) NOT NULL,
-  shipper_id INT NOT NULL,
+  repartidor_id INT NOT NULL,
   opcionEnvio_id INT NOT NULL,
   tipoPago_id INT NOT NULL,
   notificacionCorreo_id INT NOT NULL
@@ -107,8 +107,8 @@ ALTER TABLE cliente ADD CONSTRAINT PK_Cliente_Cedula PRIMARY KEY (cedula);
 ALTER TABLE carritoCompra ADD CONSTRAINT PK_CarritoCompra_Id PRIMARY KEY (id);
 ALTER TABLE carritoCompra MODIFY id INT NOT NULL AUTO_INCREMENT;
 
-ALTER TABLE shipper ADD CONSTRAINT PK_Shipper_Id PRIMARY KEY (id);
-ALTER TABLE shipper MODIFY id INT NOT NULL AUTO_INCREMENT;
+ALTER TABLE repartidor ADD CONSTRAINT PK_Repartidor_Id PRIMARY KEY (id);
+ALTER TABLE repartidor MODIFY id INT NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE opcionEnvio ADD CONSTRAINT PK_OpcionEnvio_Id PRIMARY KEY (id);
 ALTER TABLE opcionEnvio MODIFY id INT NOT NULL AUTO_INCREMENT;
@@ -133,7 +133,7 @@ ALTER TABLE libro ADD CONSTRAINT UC_Libro_Titulo UNIQUE (titulo);
 
 ALTER TABLE cliente ADD CONSTRAINT UC_Libro_Correo UNIQUE (correo);
 
-ALTER TABLE shipper ADD CONSTRAINT UC_Shipper_NombreShipper UNIQUE (nombreShipper);
+ALTER TABLE repartidor ADD CONSTRAINT UC_Repartidor_NombreRepartidor UNIQUE (nombreRepartidor);
 
 ALTER TABLE opcionEnvio ADD CONSTRAINT UC_OpcionEnvio_NombreOpcion UNIQUE (nombreOpcion);
 
@@ -153,7 +153,7 @@ ALTER TABLE contenido_carrito ADD CONSTRAINT FK_Contenido_carrito_Carrito_id FOR
 ALTER TABLE contenido_carrito ADD CONSTRAINT FK_Contenido_carrito_Libro_id FOREIGN KEY (libro_id) REFERENCES libro (isbn);
 
 ALTER TABLE pedido ADD CONSTRAINT FK_Pedido_Carrito_id FOREIGN KEY (carrito_id) REFERENCES carritoCompra (id);
-ALTER TABLE pedido ADD CONSTRAINT FK_Pedido_Shipper_id FOREIGN KEY (shipper_id) REFERENCES shipper (id);
+ALTER TABLE pedido ADD CONSTRAINT FK_Pedido_Repartidor_id FOREIGN KEY (repartidor_id) REFERENCES repartidor (id);
 ALTER TABLE pedido ADD CONSTRAINT FK_Pedido_OpcionEnvio_id FOREIGN KEY (opcionEnvio_id) REFERENCES opcionEnvio (id);
 ALTER TABLE pedido ADD CONSTRAINT FK_Pedido_TipoPago_id FOREIGN KEY (tipoPago_id) REFERENCES tiposPago (id);
 ALTER TABLE pedido ADD CONSTRAINT FK_Pedido_NotificacionCorreo_id FOREIGN KEY (notificacionCorreo_id) REFERENCES notificacionCorreo (id);
