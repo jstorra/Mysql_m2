@@ -1,3 +1,7 @@
+CREATE DATABASE IF NOT EXISTS modelo_de_datos_conceptuales;
+
+USE modelo_de_datos_conceptuales;
+
 CREATE TABLE tiposBolso (
   id INT NOT NULL,
   nombreTipo VARCHAR(50) NOT NULL
